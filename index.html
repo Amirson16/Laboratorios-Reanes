@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Sistema de Gestão Laboratorial</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet" />
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -24,818 +24,201 @@
         .tab-content.active {
             display: block;
         }
-        .status-pendente {
-            background-color: #FEF3C7;
-            color: #92400E;
-        }
-        .status-coletada {
-            background-color: #DBEAFE;
-            color: #1E40AF;
-        }
-        .status-processando {
-            background-color: #E0E7FF;
-            color: #3730A3;
-        }
-        .status-concluido {
-            background-color: #D1FAE5;
-            color: #065F46;
-        }
+        .status-pendente { background-color: #FEF3C7; color: #92400E; }
+        .status-coletada { background-color: #DBEAFE; color: #1E40AF; }
+        .status-processando { background-color: #E0E7FF; color: #3730A3; }
+        .status-concluido { background-color: #D1FAE5; color: #065F46; }
+        .status-operacional { background-color: #D1FAE5; color: #065F46; }
+        .status-manutencao { background-color: #FEF3C7; color: #92400E; }
+        .status-inativo { background-color: #F3F4F6; color: #4B5563; }
+        tbody tr:hover { background-color: #f9fafb; }
     </style>
 </head>
 <body>
     <div class="min-h-screen flex flex-col">
-        <!-- Header -->
+        
         <header class="bg-gradient-to-r from-blue-600 to-blue-800 text-white shadow-lg">
             <div class="container mx-auto px-4 py-4 flex justify-between items-center">
                 <div class="flex items-center space-x-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
-                    </svg>
+                    <svg class="h-8 w-8" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
                     <h1 class="text-2xl font-bold">Laboratorio Reane's</h1>
                 </div>
                 <div class="flex items-center space-x-4">
-                    <div class="relative">
-                        <span class="absolute inset-y-0 left-0 flex items-center pl-3">
-                            <svg class="h-5 w-5 text-blue-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                            </svg>
-                        </span>
-                        <input type="text" class="py-2 pl-10 pr-4 w-64 rounded-lg bg-blue-700 text-white placeholder-blue-200 focus:outline-none focus:ring-2 focus:ring-white" placeholder="Buscar...">
-                    </div>
-                    <div class="flex items-center space-x-2">
-                        <span class="font-medium">Dr. Carlos Santos</span>
-                        <div class="h-8 w-8 rounded-full bg-blue-400 flex items-center justify-center text-white font-medium">
-                            CS
-                        </div>
-                    </div>
+                    <div class="relative"><span class="absolute inset-y-0 left-0 flex items-center pl-3"><svg class="h-5 w-5 text-blue-200" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg></span><input class="py-2 pl-10 pr-4 w-64 rounded-lg bg-blue-700 text-white placeholder-blue-200 focus:outline-none focus:ring-2 focus:ring-white" placeholder="Buscar..." type="text" /></div>
+                    <div class="flex items-center space-x-2"><span class="font-medium">Dr. Carlos Santos</span><div class="h-8 w-8 rounded-full bg-blue-400 flex items-center justify-center text-white font-medium">CS</div></div>
                 </div>
             </div>
         </header>
-
-        <!-- Main Content -->
+        
         <div class="flex flex-1">
-            <!-- Sidebar -->
+            
             <aside class="w-64 bg-white shadow-md">
                 <nav class="mt-5 px-2">
-                    <div class="px-4 py-2 text-xs font-semibold text-gray-400 uppercase tracking-wider">
-                        Principal
-                    </div>
-                    <a href="#" class="tab-link group flex items-center px-4 py-2 text-gray-700 hover:bg-blue-100 hover:text-blue-700 rounded-md mb-1 active" data-tab="dashboard">
-                        <svg class="mr-3 h-5 w-5 text-gray-500 group-hover:text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                        </svg>
-                        Inicio
-                    </a>
-                    <a href="#" class="tab-link group flex items-center px-4 py-2 text-gray-700 hover:bg-blue-100 hover:text-blue-700 rounded-md mb-1" data-tab="pacientes">
-                        <svg class="mr-3 h-5 w-5 text-gray-500 group-hover:text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                        </svg>
-                        Pacientes
-                    </a>
-                    <a href="#" class="tab-link group flex items-center px-4 py-2 text-gray-700 hover:bg-blue-100 hover:text-blue-700 rounded-md mb-1" data-tab="exames">
-                        <svg class="mr-3 h-5 w-5 text-gray-500 group-hover:text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
-                        </svg>
-                        Exames
-                    </a>
-                    <a href="#" class="tab-link group flex items-center px-4 py-2 text-gray-700 hover:bg-blue-100 hover:text-blue-700 rounded-md mb-1" data-tab="amostras">
-                        <svg class="mr-3 h-5 w-5 text-gray-500 group-hover:text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
-                        </svg>
-                        Amostras
-                    </a>
-                    <a href="#" class="tab-link group flex items-center px-4 py-2 text-gray-700 hover:bg-blue-100 hover:text-blue-700 rounded-md mb-1" data-tab="medicos">
-                        <svg class="mr-3 h-5 w-5 text-gray-500 group-hover:text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                        </svg>
-                        Médicos
-                    </a>
-
-                    <div class="px-4 py-2 mt-6 text-xs font-semibold text-gray-400 uppercase tracking-wider">
-                        Administração
-                    </div>
-                    <a href="#" class="tab-link group flex items-center px-4 py-2 text-gray-700 hover:bg-blue-100 hover:text-blue-700 rounded-md mb-1" data-tab="equipamentos">
-                        <svg class="mr-3 h-5 w-5 text-gray-500 group-hover:text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                        </svg>
-                        Equipamentos
-                    </a>
-                    <a href="#" class="tab-link group flex items-center px-4 py-2 text-gray-700 hover:bg-blue-100 hover:text-blue-700 rounded-md mb-1" data-tab="laboratorios">
-                        <svg class="mr-3 h-5 w-5 text-gray-500 group-hover:text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                        </svg>
-                        Laboratórios
-                    </a>
-                    <a href="#" class="tab-link group flex items-center px-4 py-2 text-gray-700 hover:bg-blue-100 hover:text-blue-700 rounded-md mb-1" data-tab="relatorios">
-                        <svg class="mr-3 h-5 w-5 text-gray-500 group-hover:text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                        </svg>
-                        Relatórios
-                    </a>
+                    <div class="px-4 py-2 text-xs font-semibold text-gray-400 uppercase tracking-wider">Principal</div>
+                    <a class="tab-link group flex items-center px-4 py-2 text-gray-700 hover:bg-blue-100 hover:text-blue-700 rounded-md mb-1 active" data-tab="dashboard" href="#"><svg class="mr-3 h-5 w-5 text-gray-500 group-hover:text-blue-500" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>Inicio</a>
+                    <a class="tab-link group flex items-center px-4 py-2 text-gray-700 hover:bg-blue-100 hover:text-blue-700 rounded-md mb-1" data-tab="agendamento-online" href="#"><svg class="mr-3 h-5 w-5 text-gray-500 group-hover:text-blue-500" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>Agendamento</a>
+                    <a class="tab-link group flex items-center px-4 py-2 text-gray-700 hover:bg-blue-100 hover:text-blue-700 rounded-md mb-1" data-tab="pacientes" href="#"><svg class="mr-3 h-5 w-5 text-gray-500 group-hover:text-blue-500" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283-.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>Pacientes</a>
+                    <a class="tab-link group flex items-center px-4 py-2 text-gray-700 hover:bg-blue-100 hover:text-blue-700 rounded-md mb-1" data-tab="exames" href="#"><svg class="mr-3 h-5 w-5 text-gray-500 group-hover:text-blue-500" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>Exames</a>
+                    <a class="tab-link group flex items-center px-4 py-2 text-gray-700 hover:bg-blue-100 hover:text-blue-700 rounded-md mb-1" data-tab="amostras" href="#"><svg class="mr-3 h-5 w-5 text-gray-500 group-hover:text-blue-500" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>Amostras</a>
+                    <a class="tab-link group flex items-center px-4 py-2 text-gray-700 hover:bg-blue-100 hover:text-blue-700 rounded-md mb-1" data-tab="medicos" href="#"><svg class="mr-3 h-5 w-5 text-gray-500 group-hover:text-blue-500" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>Médicos</a>
+                    
+                    <div class="px-4 py-2 mt-6 text-xs font-semibold text-gray-400 uppercase tracking-wider">Administração</div>
+                    <a class="tab-link group flex items-center px-4 py-2 text-gray-700 hover:bg-blue-100 hover:text-blue-700 rounded-md mb-1" data-tab="guias" href="#"><svg class="mr-3 h-5 w-5 text-gray-500 group-hover:text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>Guias</a>
+                    <a class="tab-link group flex items-center px-4 py-2 text-gray-700 hover:bg-blue-100 hover:text-blue-700 rounded-md mb-1" data-tab="tipos-analises" href="#"><svg class="mr-3 h-5 w-5 text-gray-500 group-hover:text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>Tipos de Análises</a>
+                    <a class="tab-link group flex items-center px-4 py-2 text-gray-700 hover:bg-blue-100 hover:text-blue-700 rounded-md mb-1" data-tab="equipamentos" href="#"><svg class="mr-3 h-5 w-5 text-gray-500 group-hover:text-blue-500" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>Equipamentos</a>
+                    <a class="tab-link group flex items-center px-4 py-2 text-gray-700 hover:bg-blue-100 hover:text-blue-700 rounded-md mb-1" data-tab="laboratorios" href="#"><svg class="mr-3 h-5 w-5 text-gray-500 group-hover:text-blue-500" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>Laboratórios</a>
+                    <a class="tab-link group flex items-center px-4 py-2 text-gray-700 hover:bg-blue-100 hover:text-blue-700 rounded-md mb-1" data-tab="relatorios" href="#"><svg class="mr-3 h-5 w-5 text-gray-500 group-hover:text-blue-500" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>Relatórios</a>
                 </nav>
             </aside>
-
-            <!-- Content Area -->
+            
             <main class="flex-1 p-6 overflow-auto">
-                <!-- Dashboard Tab -->
-                <div id="dashboard" class="tab-content active">
-                    <div class="flex justify-between items-center mb-6">
-                        <h2 class="text-2xl font-semibold text-gray-800">Dashboard</h2>
-                        <div class="flex space-x-2">
-                            <button class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors">
-                                <svg class="inline-block h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                                </svg>
-                                Novo Exame
-                            </button>
-                            <button class="px-4 py-2 bg-white border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors">
-                                <svg class="inline-block h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
-                                </svg>
-                                Filtrar
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Stats Cards -->
+                
+                <div class="tab-content active" id="dashboard">
+                    <div class="flex justify-between items-center mb-6"><h2 class="text-2xl font-semibold text-gray-800">Dashboard</h2></div>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
-                        <div class="card bg-white rounded-lg shadow p-6 border-l-4 border-blue-500">
-                            <div class="flex items-center">
-                                <div class="p-3 rounded-full bg-blue-100 text-blue-600">
-                                    <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
-                                    </svg>
-                                </div>
-                                <div class="ml-4">
-                                    <h3 class="text-lg font-medium text-gray-500">Pacientes</h3>
-                                    <p class="text-2xl font-semibold text-gray-800">1,248</p>
-                                </div>
-                            </div>
-                            <div class="mt-4">
-                                <div class="flex items-center">
-                                    <span class="text-green-500 text-sm font-medium flex items-center">
-                                        <svg class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
-                                        </svg>
-                                        8.2%
-                                    </span>
-                                    <span class="text-gray-500 text-sm ml-2">desde o mês passado</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card bg-white rounded-lg shadow p-6 border-l-4 border-purple-500">
-                            <div class="flex items-center">
-                                <div class="p-3 rounded-full bg-purple-100 text-purple-600">
-                                    <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
-                                    </svg>
-                                </div>
-                                <div class="ml-4">
-                                    <h3 class="text-lg font-medium text-gray-500">Exames</h3>
-                                    <p class="text-2xl font-semibold text-gray-800">3,426</p>
-                                </div>
-                            </div>
-                            <div class="mt-4">
-                                <div class="flex items-center">
-                                    <span class="text-green-500 text-sm font-medium flex items-center">
-                                        <svg class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
-                                        </svg>
-                                        12.5%
-                                    </span>
-                                    <span class="text-gray-500 text-sm ml-2">desde o mês passado</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card bg-white rounded-lg shadow p-6 border-l-4 border-yellow-500">
-                            <div class="flex items-center">
-                                <div class="p-3 rounded-full bg-yellow-100 text-yellow-600">
-                                    <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
-                                    </svg>
-                                </div>
-                                <div class="ml-4">
-                                    <h3 class="text-lg font-medium text-gray-500">Amostras</h3>
-                                    <p class="text-2xl font-semibold text-gray-800">856</p>
-                                </div>
-                            </div>
-                            <div class="mt-4">
-                                <div class="flex items-center">
-                                    <span class="text-red-500 text-sm font-medium flex items-center">
-                                        <svg class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-                                        </svg>
-                                        3.2%
-                                    </span>
-                                    <span class="text-gray-500 text-sm ml-2">desde o mês passado</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card bg-white rounded-lg shadow p-6 border-l-4 border-green-500">
-                            <div class="flex items-center">
-                                <div class="p-3 rounded-full bg-green-100 text-green-600">
-                                    <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                    </svg>
-                                </div>
-                                <div class="ml-4">
-                                    <h3 class="text-lg font-medium text-gray-500">Concluídos</h3>
-                                    <p class="text-2xl font-semibold text-gray-800">2,845</p>
-                                </div>
-                            </div>
-                            <div class="mt-4">
-                                <div class="flex items-center">
-                                    <span class="text-green-500 text-sm font-medium flex items-center">
-                                        <svg class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
-                                        </svg>
-                                        9.1%
-                                    </span>
-                                    <span class="text-gray-500 text-sm ml-2">desde o mês passado</span>
-                                </div>
-                            </div>
-                        </div>
+                        <a href="#" class="tab-link card-link" data-tab="pacientes"><div class="card bg-white rounded-lg shadow p-6 border-l-4 border-blue-500"><div class="flex items-center"><div class="p-3 rounded-full bg-blue-100 text-blue-600"><svg class="h-8 w-8" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg></div><div class="ml-4"><h3 class="text-lg font-medium text-gray-500">Pacientes</h3><p class="text-2xl font-semibold text-gray-800">1,248</p></div></div></div></a>
+                        <a href="#" class="tab-link card-link" data-tab="exames"><div class="card bg-white rounded-lg shadow p-6 border-l-4 border-purple-500"><div class="flex items-center"><div class="p-3 rounded-full bg-purple-100 text-purple-600"><svg class="h-8 w-8" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg></div><div class="ml-4"><h3 class="text-lg font-medium text-gray-500">Exames</h3><p class="text-2xl font-semibold text-gray-800">3,426</p></div></div></div></a>
+                        <a href="#" class="tab-link card-link" data-tab="amostras"><div class="card bg-white rounded-lg shadow p-6 border-l-4 border-yellow-500"><div class="flex items-center"><div class="p-3 rounded-full bg-yellow-100 text-yellow-600"><svg class="h-8 w-8" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg></div><div class="ml-4"><h3 class="text-lg font-medium text-gray-500">Amostras</h3><p class="text-2xl font-semibold text-gray-800">856</p></div></div></div></a>
+                        <a href="#" class="tab-link card-link" data-tab="exames"><div class="card bg-white rounded-lg shadow p-6 border-l-4 border-green-500"><div class="flex items-center"><div class="p-3 rounded-full bg-green-100 text-green-600"><svg class="h-8 w-8" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg></div><div class="ml-4"><h3 class="text-lg font-medium text-gray-500">Concluídos</h3><p class="text-2xl font-semibold text-gray-800">2,845</p></div></div></div></a>
                     </div>
-
-                    <!-- Recent Exams -->
                     <div class="bg-white rounded-lg shadow mb-6">
-                        <div class="px-6 py-4 border-b border-gray-200">
-                            <h3 class="text-lg font-medium text-gray-800">Exames Recentes</h3>
-                        </div>
-                        <div class="overflow-x-auto">
-                            <table class="min-w-full divide-y divide-gray-200">
-                                <thead class="bg-gray-50">
-                                    <tr>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Paciente</th>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tipo</th>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Data</th>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ações</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="bg-white divide-y divide-gray-200">
-                                    <tr>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">#301</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">João Silva</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Hemograma Completo</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">23/06/2025</td>
-                                        <td class="px-6 py-4 whitespace-nowrap">
-                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full status-pendente">Pendente</span>
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                            <button class="text-blue-600 hover:text-blue-900 mr-3">Ver</button>
-                                            <button class="text-green-600 hover:text-green-900">Validar</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">#302</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Maria Oliveira</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Glicemia</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">22/06/2025</td>
-                                        <td class="px-6 py-4 whitespace-nowrap">
-                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full status-processando">Processando</span>
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                            <button class="text-blue-600 hover:text-blue-900 mr-3">Ver</button>
-                                            <button class="text-green-600 hover:text-green-900">Validar</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">#303</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Carlos Santos</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Colesterol Total</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">21/06/2025</td>
-                                        <td class="px-6 py-4 whitespace-nowrap">
-                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full status-concluido">Concluído</span>
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                            <button class="text-blue-600 hover:text-blue-900 mr-3">Ver</button>
-                                            <button class="text-gray-400 cursor-not-allowed">Validar</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">#304</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Ana Pereira</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">TSH</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">20/06/2025</td>
-                                        <td class="px-6 py-4 whitespace-nowrap">
-                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full status-coletada">Coletada</span>
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                            <button class="text-blue-600 hover:text-blue-900 mr-3">Ver</button>
-                                            <button class="text-green-600 hover:text-green-900">Validar</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">#305</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Roberto Alves</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Urina Tipo I</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">19/06/2025</td>
-                                        <td class="px-6 py-4 whitespace-nowrap">
-                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full status-concluido">Concluído</span>
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                            <button class="text-blue-600 hover:text-blue-900 mr-3">Ver</button>
-                                            <button class="text-gray-400 cursor-not-allowed">Validar</button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="px-6 py-3 flex justify-between items-center border-t border-gray-200">
-                            <div class="text-sm text-gray-500">
-                                Mostrando 5 de 42 exames
-                            </div>
-                            <div class="flex space-x-1">
-                                <button class="px-3 py-1 rounded border border-gray-300 text-gray-700 hover:bg-gray-50">Anterior</button>
-                                <button class="px-3 py-1 rounded bg-blue-600 text-white hover:bg-blue-700">1</button>
-                                <button class="px-3 py-1 rounded border border-gray-300 text-gray-700 hover:bg-gray-50">2</button>
-                                <button class="px-3 py-1 rounded border border-gray-300 text-gray-700 hover:bg-gray-50">3</button>
-                                <button class="px-3 py-1 rounded border border-gray-300 text-gray-700 hover:bg-gray-50">Próximo</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Activity and Samples -->
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                        <!-- Recent Activity -->
-                        <div class="bg-white rounded-lg shadow">
-                            <div class="px-6 py-4 border-b border-gray-200 flex justify-between items-center">
-                                <h3 class="text-lg font-medium text-gray-800">Atividades Recentes</h3>
-                                <button class="text-blue-600 hover:text-blue-800 text-sm font-medium">Ver todas</button>
-                            </div>
-                            <div class="p-6">
-                                <div class="flow-root">
-                                    <ul class="-mb-8">
-                                        <li class="relative pb-8">
-                                            <div class="relative flex space-x-3">
-                                                <div>
-                                                    <span class="h-8 w-8 rounded-full bg-blue-500 flex items-center justify-center ring-8 ring-white">
-                                                        <svg class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                                        </svg>
-                                                    </span>
-                                                </div>
-                                                <div class="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4">
-                                                    <div>
-                                                        <p class="text-sm text-gray-800">Exame <span class="font-medium">#303</span> foi validado</p>
-                                                    </div>
-                                                    <div class="text-right text-sm whitespace-nowrap text-gray-500">
-                                                        <time>Há 2 horas</time>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="relative pb-8">
-                                            <div class="relative flex space-x-3">
-                                                <div>
-                                                    <span class="h-8 w-8 rounded-full bg-green-500 flex items-center justify-center ring-8 ring-white">
-                                                        <svg class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                                                        </svg>
-                                                    </span>
-                                                </div>
-                                                <div class="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4">
-                                                    <div>
-                                                        <p class="text-sm text-gray-800">Novo paciente <span class="font-medium">Ana Pereira</span> registrado</p>
-                                                    </div>
-                                                    <div class="text-right text-sm whitespace-nowrap text-gray-500">
-                                                        <time>Há 4 horas</time>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="relative pb-8">
-                                            <div class="relative flex space-x-3">
-                                                <div>
-                                                    <span class="h-8 w-8 rounded-full bg-yellow-500 flex items-center justify-center ring-8 ring-white">
-                                                        <svg class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
-                                                        </svg>
-                                                    </span>
-                                                </div>
-                                                <div class="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4">
-                                                    <div>
-                                                        <p class="text-sm text-gray-800">Alerta: Amostra <span class="font-medium">ABC123XYZ</span> precisa ser processada</p>
-                                                    </div>
-                                                    <div class="text-right text-sm whitespace-nowrap text-gray-500">
-                                                        <time>Há 6 horas</time>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="relative">
-                                            <div class="relative flex space-x-3">
-                                                <div>
-                                                    <span class="h-8 w-8 rounded-full bg-purple-500 flex items-center justify-center ring-8 ring-white">
-                                                        <svg class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                                                        </svg>
-                                                    </span>
-                                                </div>
-                                                <div class="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4">
-                                                    <div>
-                                                        <p class="text-sm text-gray-800">Manutenção do equipamento <span class="font-medium">Modelo X1</span> agendada</p>
-                                                    </div>
-                                                    <div class="text-right text-sm whitespace-nowrap text-gray-500">
-                                                        <time>Há 12 horas</time>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Sample Tracking -->
-                        <div class="bg-white rounded-lg shadow">
-                            <div class="px-6 py-4 border-b border-gray-200">
-                                <h3 class="text-lg font-medium text-gray-800">Rastreamento de Amostras</h3>
-                            </div>
-                            <div class="p-6">
-                                <div class="mb-4">
-                                    <div class="flex items-center mb-2">
-                                        <div class="w-full bg-gray-200 rounded-full h-2.5">
-                                            <div class="bg-blue-600 h-2.5 rounded-full" style="width: 75%"></div>
-                                        </div>
-                                        <span class="ml-2 text-sm font-medium text-gray-700">75%</span>
-                                    </div>
-                                    <div class="flex justify-between text-sm text-gray-600">
-                                        <span>Amostras processadas hoje</span>
-                                        <span>45/60</span>
-                                    </div>
-                                </div>
-
-                                <div class="space-y-4 mt-6">
-                                    <div class="flex items-center p-3 bg-gray-50 rounded-lg">
-                                        <div class="flex-shrink-0 h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center">
-                                            <span class="text-blue-600 font-medium">ABC</span>
-                                        </div>
-                                        <div class="ml-4 flex-1">
-                                            <div class="flex items-center justify-between">
-                                                <h4 class="text-sm font-medium text-gray-900">ABC123XYZ</h4>
-                                                <span class="px-2 py-1 text-xs rounded-full status-coletada">Coletada</span>
-                                            </div>
-                                            <p class="text-xs text-gray-500 mt-1">Sangue • João Silva • 23/06/2025</p>
-                                        </div>
-                                    </div>
-
-                                    <div class="flex items-center p-3 bg-gray-50 rounded-lg">
-                                        <div class="flex-shrink-0 h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center">
-                                            <span class="text-blue-600 font-medium">DEF</span>
-                                        </div>
-                                        <div class="ml-4 flex-1">
-                                            <div class="flex items-center justify-between">
-                                                <h4 class="text-sm font-medium text-gray-900">DEF456UVW</h4>
-                                                <span class="px-2 py-1 text-xs rounded-full status-processando">Processando</span>
-                                            </div>
-                                            <p class="text-xs text-gray-500 mt-1">Urina • Maria Oliveira • 22/06/2025</p>
-                                        </div>
-                                    </div>
-
-                                    <div class="flex items-center p-3 bg-gray-50 rounded-lg">
-                                        <div class="flex-shrink-0 h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center">
-                                            <span class="text-blue-600 font-medium">GHI</span>
-                                        </div>
-                                        <div class="ml-4 flex-1">
-                                            <div class="flex items-center justify-between">
-                                                <h4 class="text-sm font-medium text-gray-900">GHI789RST</h4>
-                                                <span class="px-2 py-1 text-xs rounded-full status-concluido">Concluído</span>
-                                            </div>
-                                            <p class="text-xs text-gray-500 mt-1">Sangue • Carlos Santos • 21/06/2025</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <button class="mt-6 w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                                    Ver todas as amostras
-                                </button>
-                            </div>
-                        </div>
+                       <div class="px-6 py-4 border-b border-gray-200"><h3 class="text-lg font-medium text-gray-800">Exames Recentes</h3></div>
+                       <div class="overflow-x-auto"><table class="min-w-full divide-y divide-gray-200"><thead class="bg-gray-50"><tr><th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" scope="col">ID</th><th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" scope="col">Paciente</th><th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" scope="col">Tipo</th><th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" scope="col">Data</th><th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" scope="col">Status</th><th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" scope="col">Ações</th></tr></thead><tbody class="bg-white divide-y divide-gray-200"><tr><td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">#301</td><td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">João Silva</td><td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Hemograma Completo</td><td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">30/06/2025</td><td class="px-6 py-4 whitespace-nowrap"><span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full status-pendente">Pendente</span></td><td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"><button class="text-blue-600 hover:text-blue-900 mr-3">Ver</button><button class="text-green-600 hover:text-green-900">Validar</button></td></tr><tr><td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">#302</td><td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Maria Oliveira</td><td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Glicemia</td><td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">29/06/2025</td><td class="px-6 py-4 whitespace-nowrap"><span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full status-processando">Processando</span></td><td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"><button class="text-blue-600 hover:text-blue-900 mr-3">Ver</button><button class="text-green-600 hover:text-green-900">Validar</button></td></tr><tr><td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">#303</td><td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Carlos Santos</td><td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Colesterol Total</td><td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">28/06/2025</td><td class="px-6 py-4 whitespace-nowrap"><span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full status-concluido">Concluído</span></td><td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"><button class="text-blue-600 hover:text-blue-900 mr-3">Ver</button><button class="text-gray-400 cursor-not-allowed">Validar</button></td></tr></tbody></table></div>
                     </div>
                 </div>
 
-                <!-- Pacientes Tab -->
-                <div id="pacientes" class="tab-content">
-                    <div class="flex justify-between items-center mb-6">
-                        <h2 class="text-2xl font-semibold text-gray-800">Pacientes</h2>
-                        <button class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors">
-                            <svg class="inline-block h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                            </svg>
-                            Novo Paciente
-                        </button>
+                <div class="tab-content" id="agendamento-online">
+                    <h2 class="text-2xl font-semibold text-gray-800 mb-6">Agendamento de Exame</h2>
+                    <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div><label class="block text-gray-700 text-sm font-bold mb-2">CPF do Paciente:</label><input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder="000.000.000-00" data-mask="###.###.###-##"></div>
+                            <div><label class="block text-gray-700 text-sm font-bold mb-2">Tipo de Exame:</label><select class="shadow border rounded w-full py-2 px-3 text-gray-700"><option>Hemograma Completo</option><option>Glicemia</option><option>Colesterol Total</option></select></div>
+                            <div><label class="block text-gray-700 text-sm font-bold mb-2">Unidade de Coleta:</label><select class="shadow border rounded w-full py-2 px-3 text-gray-700"><option>Unidade Centro</option><option>Unidade Sul</option></select></div>
+                            <div><label class="block text-gray-700 text-sm font-bold mb-2">Data e Horário:</label><input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700" type="datetime-local" /></div>
+                        </div>
+                        <div class="mt-6"><button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">Agendar Exame</button></div>
                     </div>
-
+                </div>
+                
+                <div class="tab-content" id="pacientes">
+                    <div class="flex justify-between items-center mb-6"><h2 class="text-2xl font-semibold text-gray-800">Pacientes</h2><button class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"><svg class="inline-block h-4 w-4 mr-1" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M12 6v6m0 0v6m0-6h6m-6 0H6" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>Novo Paciente</button></div>
                     <div class="bg-white rounded-lg shadow mb-6">
-                        <div class="px-6 py-4 border-b border-gray-200 flex justify-between items-center">
-                            <h3 class="text-lg font-medium text-gray-800">Lista de Pacientes</h3>
-                            <div class="relative">
-                                <input type="text" placeholder="Buscar paciente..." class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                                <svg class="absolute right-3 top-2.5 h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="overflow-x-auto">
-                            <table class="min-w-full divide-y divide-gray-200">
-                                <thead class="bg-gray-50">
-                                    <tr>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nome</th>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">CPF</th>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Data de Nascimento</th>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Telefone</th>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ações</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="bg-white divide-y divide-gray-200">
-                                    <tr>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">#1</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">João Silva</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">123.456.789-00</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">10/05/1980</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">(11) 98765-4321</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                            <button class="text-blue-600 hover:text-blue-900 mr-3">Ver</button>
-                                            <button class="text-yellow-600 hover:text-yellow-900 mr-3">Editar</button>
-                                            <button class="text-red-600 hover:text-red-900">Excluir</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">#2</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Maria Oliveira</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">987.654.321-00</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">15/03/1975</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">(11) 91234-5678</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                            <button class="text-blue-600 hover:text-blue-900 mr-3">Ver</button>
-                                            <button class="text-yellow-600 hover:text-yellow-900 mr-3">Editar</button>
-                                            <button class="text-red-600 hover:text-red-900">Excluir</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">#3</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Carlos Santos</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">456.789.123-00</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">22/11/1990</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">(11) 95678-1234</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                            <button class="text-blue-600 hover:text-blue-900 mr-3">Ver</button>
-                                            <button class="text-yellow-600 hover:text-yellow-900 mr-3">Editar</button>
-                                            <button class="text-red-600 hover:text-red-900">Excluir</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">#4</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Ana Pereira</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">789.123.456-00</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">05/07/1985</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">(11) 94321-8765</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                            <button class="text-blue-600 hover:text-blue-900 mr-3">Ver</button>
-                                            <button class="text-yellow-600 hover:text-yellow-900 mr-3">Editar</button>
-                                            <button class="text-red-600 hover:text-red-900">Excluir</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">#5</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Roberto Alves</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">321.654.987-00</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">18/09/1982</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">(11) 98765-1234</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                            <button class="text-blue-600 hover:text-blue-900 mr-3">Ver</button>
-                                            <button class="text-yellow-600 hover:text-yellow-900 mr-3">Editar</button>
-                                            <button class="text-red-600 hover:text-red-900">Excluir</button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="px-6 py-3 flex justify-between items-center border-t border-gray-200">
-                            <div class="text-sm text-gray-500">
-                                Mostrando 5 de 1,248 pacientes
-                            </div>
-                            <div class="flex space-x-1">
-                                <button class="px-3 py-1 rounded border border-gray-300 text-gray-700 hover:bg-gray-50">Anterior</button>
-                                <button class="px-3 py-1 rounded bg-blue-600 text-white hover:bg-blue-700">1</button>
-                                <button class="px-3 py-1 rounded border border-gray-300 text-gray-700 hover:bg-gray-50">2</button>
-                                <button class="px-3 py-1 rounded border border-gray-300 text-gray-700 hover:bg-gray-50">3</button>
-                                <button class="px-3 py-1 rounded border border-gray-300 text-gray-700 hover:bg-gray-50">Próximo</button>
-                            </div>
-                        </div>
+                        <div class="px-6 py-4 border-b border-gray-200"><h3 class="text-lg font-medium text-gray-800">Lista de Pacientes</h3></div>
+                        <div class="overflow-x-auto"><table class="min-w-full divide-y divide-gray-200"><thead class="bg-gray-50"><tr><th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" scope="col">Nome</th><th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" scope="col">CPF</th><th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" scope="col">Data Nasc.</th><th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" scope="col">Telefone</th><th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" scope="col">Email</th><th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" scope="col">Ações</th></tr></thead><tbody class="bg-white divide-y divide-gray-200"><tr><td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">João Silva</td><td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">123.456.789-00</td><td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">10/05/1980</td><td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">(11) 98765-4321</td><td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">joao.silva@example.com</td><td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"><button class="text-blue-600 hover:text-blue-900 mr-3">Ver</button><button class="text-yellow-600 hover:text-yellow-900 mr-3">Editar</button><button class="text-red-600 hover:text-red-900">Excluir</button></td></tr><tr><td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Maria Oliveira</td><td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">987.654.321-00</td><td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">15/03/1975</td><td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">(11) 91234-5678</td><td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">maria.o@example.com</td><td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"><button class="text-blue-600 hover:text-blue-900 mr-3">Ver</button><button class="text-yellow-600 hover:text-yellow-900 mr-3">Editar</button><button class="text-red-600 hover:text-red-900">Excluir</button></td></tr></tbody></table></div>
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="exames">
+                    <div class="flex justify-between items-center mb-6"><h2 class="text-2xl font-semibold text-gray-800">Exames</h2><button class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"><svg class="inline-block h-4 w-4 mr-1" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M12 6v6m0 0v6m0-6h6m-6 0H6" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>Novo Exame</button></div>
+                    <div class="bg-white rounded-lg shadow mb-6">
+                        <div class="px-6 py-4 border-b border-gray-200"><h3 class="text-lg font-medium text-gray-800">Lista de Exames</h3></div>
+                        <div class="overflow-x-auto"><table class="min-w-full divide-y divide-gray-200"><thead class="bg-gray-50"><tr><th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" scope="col">ID</th><th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" scope="col">Tipo</th><th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" scope="col">Paciente</th><th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" scope="col">Data</th><th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" scope="col">Status</th><th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" scope="col">Ações</th></tr></thead><tbody class="bg-white divide-y divide-gray-200"><tr><td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">#301</td><td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Hemograma Completo</td><td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">João Silva</td><td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">30/06/2025</td><td class="px-6 py-4 whitespace-nowrap"><span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full status-pendente">Pendente</span></td><td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"><button class="text-blue-600 hover:text-blue-900 mr-3">Ver Laudo</button><button class="text-green-600 hover:text-green-900 mr-3">Validar</button><button class="text-red-600 hover:text-red-900">Excluir</button></td></tr><tr><td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">#303</td><td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Colesterol Total</td><td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Carlos Santos</td><td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">28/06/2025</td><td class="px-6 py-4 whitespace-nowrap"><span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full status-concluido">Concluído</span></td><td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"><button class="text-blue-600 hover:text-blue-900 mr-3">Ver Laudo</button><button class="text-gray-400 cursor-not-allowed mr-3">Validar</button><button class="text-red-600 hover:text-red-900">Excluir</button></td></tr></tbody></table></div>
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="amostras">
+                    <h2 class="text-2xl font-semibold text-gray-800 mb-6">Amostras</h2>
+                    <div class="bg-white rounded-lg shadow mb-6">
+                         <div class="px-6 py-4 border-b border-gray-200"><h3 class="text-lg font-medium text-gray-800">Rastreamento de Amostras</h3></div>
+                         <div class="p-6"><table class="min-w-full divide-y divide-gray-200"><thead class="bg-gray-50"><tr><th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Código</th><th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Paciente</th><th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Data Coleta</th><th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th></tr></thead><tbody class="bg-white divide-y divide-gray-200"><tr><td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">ABC123XYZ</td><td class="px-6 py-4">João Silva</td><td class="px-6 py-4">30/06/2025</td><td class="px-6 py-4"><span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full status-coletada">Coletada</span></td></tr><tr><td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">DEF456UVW</td><td class="px-6 py-4">Maria Oliveira</td><td class="px-6 py-4">29/06/2025</td><td class="px-6 py-4"><span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full status-processando">Processando</span></td></tr><tr><td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">GHI789RST</td><td class="px-6 py-4">Carlos Santos</td><td class="px-6 py-4">28/06/2025</td><td class="px-6 py-4"><span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full status-concluido">Concluído</span></td></tr></tbody></table></div>
                     </div>
                 </div>
 
-                <!-- Exames Tab -->
-                <div id="exames" class="tab-content">
-                    <div class="flex justify-between items-center mb-6">
-                        <h2 class="text-2xl font-semibold text-gray-800">Exames</h2>
-                        <div class="flex space-x-2">
-                            <button class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors">
-                                <svg class="inline-block h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                                </svg>
-                                Novo Exame
-                            </button>
-                            <button class="px-4 py-2 bg-white border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors">
-                                <svg class="inline-block h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
-                                </svg>
-                                Filtrar
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="bg-white rounded-lg shadow mb-6">
-                        <div class="px-6 py-4 border-b border-gray-200 flex justify-between items-center">
-                            <h3 class="text-lg font-medium text-gray-800">Lista de Exames</h3>
-                            <div class="relative">
-                                <input type="text" placeholder="Buscar exame..." class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                                <svg class="absolute right-3 top-2.5 h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="overflow-x-auto">
-                            <table class="min-w-full divide-y divide-gray-200">
-                                <thead class="bg-gray-50">
-                                    <tr>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tipo</th>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Paciente</th>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Data</th>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ações</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="bg-white divide-y divide-gray-200">
-                                    <tr>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">#301</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Hemograma Completo</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">João Silva</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">23/06/2025</td>
-                                        <td class="px-6 py-4 whitespace-nowrap">
-                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full status-pendente">Pendente</span>
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                            <button class="text-blue-600 hover:text-blue-900 mr-3">Ver</button>
-                                            <button class="text-green-600 hover:text-green-900 mr-3">Validar</button>
-                                            <button class="text-red-600 hover:text-red-900">Excluir</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">#302</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Glicemia</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Maria Oliveira</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">22/06/2025</td>
-                                        <td class="px-6 py-4 whitespace-nowrap">
-                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full status-processando">Processando</span>
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                            <button class="text-blue-600 hover:text-blue-900 mr-3">Ver</button>
-                                            <button class="text-green-600 hover:text-green-900 mr-3">Validar</button>
-                                            <button class="text-red-600 hover:text-red-900">Excluir</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">#303</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Colesterol Total</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Carlos Santos</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">21/06/2025</td>
-                                        <td class="px-6 py-4 whitespace-nowrap">
-                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full status-concluido">Concluído</span>
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                            <button class="text-blue-600 hover:text-blue-900 mr-3">Ver</button>
-                                            <button class="text-gray-400 cursor-not-allowed mr-3">Validar</button>
-                                            <button class="text-red-600 hover:text-red-900">Excluir</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">#304</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">TSH</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Ana Pereira</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">20/06/2025</td>
-                                        <td class="px-6 py-4 whitespace-nowrap">
-                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full status-coletada">Coletada</span>
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                            <button class="text-blue-600 hover:text-blue-900 mr-3">Ver</button>
-                                            <button class="text-green-600 hover:text-green-900 mr-3">Validar</button>
-                                            <button class="text-red-600 hover:text-red-900">Excluir</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">#305</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Urina Tipo I</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Roberto Alves</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">19/06/2025</td>
-                                        <td class="px-6 py-4 whitespace-nowrap">
-                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full status-concluido">Concluído</span>
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                            <button class="text-blue-600 hover:text-blue-900 mr-3">Ver</button>
-                                            <button class="text-gray-400 cursor-not-allowed mr-3">Validar</button>
-                                            <button class="text-red-600 hover:text-red-900">Excluir</button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="px-6 py-3 flex justify-between items-center border-t border-gray-200">
-                            <div class="text-sm text-gray-500">
-                                Mostrando 5 de 3,426 exames
-                            </div>
-                            <div class="flex space-x-1">
-                                <button class="px-3 py-1 rounded border border-gray-300 text-gray-700 hover:bg-gray-50">Anterior</button>
-                                <button class="px-3 py-1 rounded bg-blue-600 text-white hover:bg-blue-700">1</button>
-                                <button class="px-3 py-1 rounded border border-gray-300 text-gray-700 hover:bg-gray-50">2</button>
-                                <button class="px-3 py-1 rounded border border-gray-300 text-gray-700 hover:bg-gray-50">3</button>
-                                <button class="px-3 py-1 rounded border border-gray-300 text-gray-700 hover:bg-gray-50">Próximo</button>
-                            </div>
-                        </div>
-                    </div>
+                <div class="tab-content" id="guias">
+                    <div class="flex justify-between items-center mb-6"><h2 class="text-2xl font-semibold text-gray-800">Emissão e Controle de Guias</h2></div>
+                    <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-6"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"><div><label class="block text-gray-700 text-sm font-bold mb-2">CPF do Paciente</label><input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700" type="text" data-mask="###.###.###-##" placeholder="000.000.000-00"/></div><div><label class="block text-gray-700 text-sm font-bold mb-2">Convênio</label><input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700" type="text" placeholder="Unimed, SulAmérica, etc."/></div><div><label class="block text-gray-700 text-sm font-bold mb-2">Médico Solicitante</label><input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700" type="text" placeholder="Dr. Ricardo Almeida"/></div></div><div class="mt-6 flex justify-end"><button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="submit">Gerar Guia</button></div></form>
+                    <div class="bg-white rounded-lg shadow"><div class="px-6 py-4 border-b"><h3 class="text-lg font-medium text-gray-800">Guias Emitidas Recentemente</h3></div><div class="overflow-x-auto"><table class="min-w-full divide-y divide-gray-200"><thead class="bg-gray-50"><tr><th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nº Guia</th><th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Paciente</th><th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Convênio</th><th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th><th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ações</th></tr></thead><tbody class="bg-white divide-y divide-gray-200"><tr><td class="px-6 py-4">GUIA-20250630-001</td><td class="px-6 py-4">João Silva</td><td class="px-6 py-4">Unimed</td><td class="px-6 py-4"><span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full status-coletada">Utilizada</span></td><td class="px-6 py-4 whitespace-nowrap text-sm"><button class="text-blue-600 hover:text-blue-900">Visualizar</button></td></tr><tr><td class="px-6 py-4">GUIA-20250629-005</td><td class="px-6 py-4">Ana Pereira</td><td class="px-6 py-4">SulAmérica</td><td class="px-6 py-4"><span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full status-pendente">Aguardando</span></td><td class="px-6 py-4 whitespace-nowrap text-sm"><button class="text-blue-600 hover:text-blue-900 mr-3">Imprimir</button><button class="text-red-600 hover:text-red-900">Cancelar</button></td></tr></tbody></table></div></div>
                 </div>
-                <!-- Adicionando novas abas -->
-    <div id="medicos" class="tab-content">
-        <h2 class="text-2xl font-semibold text-gray-800 mb-6">Médicos</h2>
-        <p>Conteúdo da página de médicos...</p>
-    </div>
-    <div id="equipamentos" class="tab-content">
-        <h2 class="text-2xl font-semibold text-gray-800 mb-6">Equipamentos</h2>
-        <p>Lista de equipamentos utilizados no laboratório.</p>
-    </div>
-    <div id="laboratorios" class="tab-content">
-        <h2 class="text-2xl font-semibold text-gray-800 mb-6">Laboratórios</h2>
-        <p>Informações sobre as unidades laboratoriais.</p>
-    </div>
-    <div id="relatorios" class="tab-content">
-        <h2 class="text-2xl font-semibold text-gray-800 mb-6">Relatórios</h2>
-        <p>Visualização e geração de relatórios clínicos.</p>
+
+                <div class="tab-content" id="tipos-analises">
+                    <div class="flex justify-between items-center mb-6"><h2 class="text-2xl font-semibold text-gray-800">Cadastro de Tipos de Análises</h2></div>
+                     <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-6"><div class="mb-4"><label class="block text-gray-700 text-sm font-bold mb-2">Nome da Análise</label><input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700" type="text" placeholder="Ex: Hemograma Completo"/></div><div class="mb-4"><label class="block text-gray-700 text-sm font-bold mb-2">Descrição / Instruções de Coleta</label><textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700" placeholder="Ex: Jejum de 8 horas necessário."></textarea></div><div class="flex justify-end"><button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="submit">Cadastrar Análise</button></div></form>
+                    <div class="bg-white rounded-lg shadow"><div class="px-6 py-4 border-b"><h3 class="text-lg font-medium text-gray-800">Análises Cadastradas</h3></div><div class="overflow-x-auto"><table class="min-w-full divide-y divide-gray-200"><thead class="bg-gray-50"><tr><th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nome da Análise</th><th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Descrição</th><th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ações</th></tr></thead><tbody class="bg-white divide-y divide-gray-200"><tr><td class="px-6 py-4">Hemograma Completo</td><td class="px-6 py-4">Avaliação geral das células sanguíneas (hemácias, leucócitos, plaquetas).</td><td class="px-6 py-4 whitespace-nowrap text-sm"><button class="text-yellow-600 hover:text-yellow-900 mr-3">Editar</button><button class="text-red-600 hover:text-red-900">Excluir</button></td></tr><tr><td class="px-6 py-4">Glicemia de Jejum</td><td class="px-6 py-4">Mede o nível de açúcar no sangue. Jejum de 8 a 12 horas.</td><td class="px-6 py-4 whitespace-nowrap text-sm"><button class="text-yellow-600 hover:text-yellow-900 mr-3">Editar</button><button class="text-red-600 hover:text-red-900">Excluir</button></td></tr><tr><td class="px-6 py-4">Colesterol Total e Frações</td><td class="px-6 py-4">Mede os níveis de colesterol HDL, LDL, VLDL e triglicerídeos.</td><td class="px-6 py-4 whitespace-nowrap text-sm"><button class="text-yellow-600 hover:text-yellow-900 mr-3">Editar</button><button class="text-red-600 hover:text-red-900">Excluir</button></td></tr><tr><td class="px-6 py-4">TSH (Hormônio Tireoestimulante)</td><td class="px-6 py-4">Avalia a função da tireoide.</td><td class="px-6 py-4 whitespace-nowrap text-sm"><button class="text-yellow-600 hover:text-yellow-900 mr-3">Editar</button><button class="text-red-600 hover:text-red-900">Excluir</button></td></tr></tbody></table></div></div>
+                </div>
+
+                <div class="tab-content" id="equipamentos">
+                    <div class="flex justify-between items-center mb-6"><h2 class="text-2xl font-semibold text-gray-800">Cadastro de Equipamentos</h2></div>
+                    <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-6"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"><div><label class="block text-gray-700 text-sm font-bold mb-2">Nome do Equipamento</label><input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700" type="text" placeholder="Analisador Hematológico"></div><div><label class="block text-gray-700 text-sm font-bold mb-2">Modelo</label><input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700" type="text" placeholder="Sysmex XN-1000"></div><div><label class="block text-gray-700 text-sm font-bold mb-2">Fabricante</label><input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700" type="text" placeholder="Sysmex"></div><div><label class="block text-gray-700 text-sm font-bold mb-2">Status de Operação</label><select class="shadow border rounded w-full py-2 px-3 text-gray-700"><option>Operacional</option><option>Em Manutenção</option><option>Inativo</option></select></div></div><div class="mt-6 flex justify-end"><button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="submit">Cadastrar Equipamento</button></div></form>
+                    <div class="bg-white rounded-lg shadow"><div class="px-6 py-4 border-b"><h3 class="text-lg font-medium text-gray-800">Equipamentos Cadastrados</h3></div><div class="overflow-x-auto"><table class="min-w-full divide-y divide-gray-200"><thead class="bg-gray-50"><tr><th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nome</th><th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Modelo</th><th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Fabricante</th><th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th><th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ações</th></tr></thead><tbody class="bg-white divide-y divide-gray-200"><tr><td class="px-6 py-4">Analisador Hematológico</td><td class="px-6 py-4">Sysmex XN-1000</td><td class="px-6 py-4">Sysmex</td><td class="px-6 py-4"><span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full status-operacional">Operacional</span></td><td class="px-6 py-4 whitespace-nowrap text-sm"><button class="text-yellow-600 hover:text-yellow-900 mr-3">Editar</button><button class="text-blue-600 hover:text-blue-900">Ver Histórico</button></td></tr><tr><td class="px-6 py-4">Analisador Bioquímico</td><td class="px-6 py-4">Cobas c501</td><td class="px-6 py-4">Roche</td><td class="px-6 py-4"><span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full status-operacional">Operacional</span></td><td class="px-6 py-4 whitespace-nowrap text-sm"><button class="text-yellow-600 hover:text-yellow-900 mr-3">Editar</button><button class="text-blue-600 hover:text-blue-900">Ver Histórico</button></td></tr><tr><td class="px-6 py-4">Centrífuga Refrigerada</td><td class="px-6 py-4">5810 R</td><td class="px-6 py-4">Eppendorf</td><td class="px-6 py-4"><span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full status-manutencao">Em Manutenção</span></td><td class="px-6 py-4 whitespace-nowrap text-sm"><button class="text-yellow-600 hover:text-yellow-900 mr-3">Editar</button><button class="text-blue-600 hover:text-blue-900">Ver Histórico</button></td></tr></tbody></table></div></div>
+                </div>
+                
+                <div class="tab-content" id="medicos">
+                    <div class="flex justify-between items-center mb-6"><h2 class="text-2xl font-semibold text-gray-800">Médicos</h2><button class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"><svg class="inline-block h-4 w-4 mr-1" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M12 6v6m0 0v6m0-6h6m-6 0H6" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>Novo Médico</button></div>
+                    <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-6"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"><div><label class="block text-gray-700 text-sm font-bold mb-2">Nome Completo</label><input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder="Dr. Nome Sobrenome"></div><div><label class="block text-gray-700 text-sm font-bold mb-2">CRM</label><input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder="123456-SP"></div><div><label class="block text-gray-700 text-sm font-bold mb-2">Especialidade</label><input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder="Cardiologia"></div><div><label class="block text-gray-700 text-sm font-bold mb-2">Telefone</label><input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder="(11) 99999-8888" data-mask="(##) #####-####"></div></div><div class="mt-6 flex justify-end"><button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">Cadastrar Médico</button></div></form>
+                    <div class="bg-white rounded-lg shadow"><div class="px-6 py-4 border-b"><h3 class="text-lg font-medium text-gray-800">Médicos Cadastrados</h3></div><div class="overflow-x-auto"><table class="min-w-full divide-y divide-gray-200"><thead class="bg-gray-50"><tr><th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nome</th><th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">CRM</th><th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Especialidade</th><th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Contato</th><th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ações</th></tr></thead><tbody class="bg-white divide-y divide-gray-200"><tr><td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Dr. Ricardo Almeida</td><td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">123456-SP</td><td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Clínico Geral</td><td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">(11) 98877-6655</td><td class="px-6 py-4 whitespace-nowrap text-sm"><button class="text-yellow-600 hover:text-yellow-900 mr-3">Editar</button><button class="text-red-600 hover:text-red-900">Excluir</button></td></tr><tr><td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Dra. Beatriz Costa</td><td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">654321-RJ</td><td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Endocrinologia</td><td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">(21) 97766-5544</td><td class="px-6 py-4 whitespace-nowrap text-sm"><button class="text-yellow-600 hover:text-yellow-900 mr-3">Editar</button><button class="text-red-600 hover:text-red-900">Excluir</button></td></tr></tbody></table></div></div>
+                </div>
+                
+                <div class="tab-content" id="laboratorios">
+                    <div class="flex justify-between items-center mb-6"><h2 class="text-2xl font-semibold text-gray-800">Laboratórios</h2><button class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"><svg class="inline-block h-4 w-4 mr-1" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M12 6v6m0 0v6m0-6h6m-6 0H6" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>Novo Laboratório</button></div>
+                    <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-6"><div class="grid grid-cols-1 md:grid-cols-2 gap-6"><div><label class="block text-gray-700 text-sm font-bold mb-2">Nome do Laboratório</label><input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700" type="text" placeholder="Laboratório Matriz"></div><div><label class="block text-gray-700 text-sm font-bold mb-2">Endereço</label><input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700" type="text" placeholder="Rua Exemplo, 123, Centro"></div><div><label class="block text-gray-700 text-sm font-bold mb-2">Responsável Técnico</label><input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700" type="text" placeholder="Dr. Fulano de Tal"></div><div><label class="block text-gray-700 text-sm font-bold mb-2">Telefone</label><input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700" type="text" placeholder="(11) 4004-4004" data-mask="(##) ####-####"></div></div><div class="mt-6 flex justify-end"><button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="submit">Cadastrar Laboratório</button></div></form>
+                    <div class="bg-white rounded-lg shadow"><div class="px-6 py-4 border-b"><h3 class="text-lg font-medium text-gray-800">Laboratórios Cadastrados</h3></div><div class="overflow-x-auto"><table class="min-w-full divide-y divide-gray-200"><thead class="bg-gray-50"><tr><th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nome</th><th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Endereço</th><th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Responsável</th><th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Telefone</th><th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ações</th></tr></thead><tbody class="bg-white divide-y divide-gray-200"><tr><td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Unidade Centro</td><td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Av. Principal, 500</td><td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Dra. Ana Marques</td><td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">(34) 3232-1010</td><td class="px-6 py-4 whitespace-nowrap text-sm"><button class="text-yellow-600 hover:text-yellow-900 mr-3">Editar</button><button class="text-red-600 hover:text-red-900">Excluir</button></td></tr><tr><td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Unidade Sul</td><td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Rua dos Testes, 2020</td><td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Dr. Pedro Ramos</td><td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">(34) 3333-2020</td><td class="px-6 py-4 whitespace-nowrap text-sm"><button class="text-yellow-600 hover:text-yellow-900 mr-3">Editar</button><button class="text-red-600 hover:text-red-900">Excluir</button></td></tr></tbody></table></div></div>
+                </div>
+                
+                <div class="tab-content" id="relatorios">
+                    <div class="flex justify-between items-center mb-6"><h2 class="text-2xl font-semibold text-gray-800">Relatórios Gerenciais</h2></div>
+                    <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-6"><div class="grid grid-cols-1 md:grid-cols-3 gap-6"><div><label class="block text-gray-700 text-sm font-bold mb-2">Tipo de Relatório</label><select class="shadow border rounded w-full py-2 px-3 text-gray-700"><option>Produtividade</option><option>Faturamento</option><option>Exames Realizados</option><option>Pacientes Atendidos</option></select></div><div><label class="block text-gray-700 text-sm font-bold mb-2">Data Inicial</label><input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700" type="date" value="2025-06-01"/></div><div><label class="block text-gray-700 text-sm font-bold mb-2">Data Final</label><input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700" type="date" value="2025-06-30"/></div></div><div class="mt-6 flex justify-end"><button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="submit">Gerar Relatório</button></div></form>
+                    <div class="bg-white rounded-lg shadow"><div class="px-6 py-4 border-b"><h3 class="text-lg font-medium text-gray-800">Histórico de Relatórios</h3></div><div class="overflow-x-auto"><table class="min-w-full divide-y divide-gray-200"><thead class="bg-gray-50"><tr><th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tipo</th><th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Período</th><th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Data de Geração</th><th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Gerado Por</th><th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ações</th></tr></thead><tbody class="bg-white divide-y divide-gray-200"><tr><td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Faturamento</td><td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">01/05/2025 - 31/05/2025</td><td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">01/06/2025 09:30</td><td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Dr. Carlos Santos</td><td class="px-6 py-4 whitespace-nowrap text-sm"><button class="text-blue-600 hover:text-blue-900">Download</button></td></tr><tr><td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Exames Realizados</td><td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">01/04/2025 - 30/04/2025</td><td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">01/05/2025 11:00</td><td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Dr. Carlos Santos</td><td class="px-6 py-4 whitespace-nowrap text-sm"><button class="text-blue-600 hover:text-blue-900">Download</button></td></tr></tbody></table></div></div>
+                </div>
+
+            </main>
+        </div>
     </div>
 
     <script>
-      document.querySelectorAll('.tab-link').forEach(link => {
-        link.addEventListener('click', function (e) {
-          e.preventDefault();
-          document.querySelectorAll('.tab-link').forEach(l => l.classList.remove('active'));
-          document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
-          this.classList.add('active');
-          const tabId = this.getAttribute('data-tab');
-          const tab = document.getElementById(tabId);
-          if (tab) tab.classList.add('active');
+        // Executa o script somente após o carregamento completo da página HTML.
+        document.addEventListener('DOMContentLoaded', function () {
+            const tabLinks = document.querySelectorAll('.tab-link');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            // Função para trocar de abas
+            function switchTab(tabId) {
+                // Remove a classe 'active' de todos os conteúdos e links da barra lateral.
+                tabContents.forEach(tab => tab.classList.remove('active'));
+                document.querySelectorAll('aside .tab-link').forEach(l => l.classList.remove('active'));
+
+                // Adiciona a classe 'active' ao conteúdo alvo e ao seu link correspondente na barra lateral.
+                const newActiveTab = document.getElementById(tabId);
+                const newActiveLink = document.querySelector(`aside .tab-link[data-tab="${tabId}"]`);
+
+                if (newActiveTab) newActiveTab.classList.add('active');
+                if (newActiveLink) {
+                    newActiveLink.classList.add('active');
+                } else {
+                    // Se nenhum link específico for encontrado (ex: clique em um card), ativa o link do 'Inicio'.
+                    document.querySelector('aside .tab-link[data-tab="dashboard"]').classList.add('active');
+                }
+            }
+
+            // Adiciona o evento de clique para todos os links de aba.
+            tabLinks.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const tabId = this.getAttribute('data-tab');
+                    switchTab(tabId);
+                });
+            });
+
+            // Lógica da Máscara de Input (para formatar campos como CPF e telefone).
+            document.querySelectorAll('[data-mask]').forEach(el => {
+                el.addEventListener('input', (e) => {
+                    const mask = e.target.getAttribute('data-mask');
+                    // Remove todos os caracteres não numéricos.
+                    const value = e.target.value.replace(/\D/g, '');
+                    let maskedValue = '';
+                    let k = 0;
+                    // Aplica a máscara caractere por caractere.
+                    for (let i = 0; i < mask.length; i++) {
+                        if (k >= value.length) break;
+                        if (mask[i] === '#') {
+                            maskedValue += value[k++];
+                        } else {
+                            maskedValue += mask[i];
+                        }
+                    }
+                    e.target.value = maskedValue;
+                });
+            });
         });
-      });
     </script>
-
-                <!-- Amostras Tab -->
-                <div id="amostras" class="tab-content">
-                    <div class="flex justify-between items-center mb-6">
-                        <h2 class="text-2xl font-semibold text-gray-800">Amostras</h2>
-                        <div class="flex space-x-2">
-                            <button class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors">
-                                <svg class="inline-block h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                                </svg>
-                                Nova Amostra
-                            </button>
-                            <button class="px-4 py-2 bg-white border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors">
-                                <svg class="inline-block h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
-                                </svg>
-                                Filtrar
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="bg-white rounded-lg shadow mb-6">
-                        <div class="px-6 py-4 border-b border-gray-200 flex justify-between items-center">
-                            <h3 class="text-lg font-medium text-gray-800">Lista de Amostras</h3>
-                            <div class="relative">
-                                <input type="text" placeholder="Buscar código..." class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                                <svg class="absolute right-3 top-2.5 h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="overflow-x-auto">
-                            <table class="min-w-full divide-y divide-gray-200">
-                                <thead class="bg-gray-50">
-                                    <tr>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Código</th>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tipo</th>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Paciente</th>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Data Coleta</th>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-```
-
-                                        
+</body>
+</html>
